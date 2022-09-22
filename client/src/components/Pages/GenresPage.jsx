@@ -3,7 +3,6 @@ import Navbar from "../Sections/Navbar";
 import { useNavigate } from "react-router-dom";
 import "./GenresPage.css";
 import { v4 as uuidv4 } from "uuid";
-
 import { useState } from "react";
 const GenresPage = () => {
   const [genresinfo, setGenresInfo] = useState([
@@ -22,7 +21,6 @@ const GenresPage = () => {
       image:
         "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21087-sHb9zUZFsHe1.jpg",
     },
-
     {
       title: "Drama",
       image:
@@ -43,7 +41,6 @@ const GenresPage = () => {
       image:
         "https://s4.anilist.co/file/anilistcdn/media/anime/banner/9756-d5M8NffgJJHB.jpg",
     },
-
     {
       title: "Mecha",
       image:
@@ -67,14 +64,13 @@ const GenresPage = () => {
     {
       title: "Romance",
       image:
-        "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n9253-JIhmKgBKsWUN.jpg",
+        "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21519-XIr3PeczUjjF.png",
     },
     {
       title: "Sci-fi",
       image:
         "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n9253-JIhmKgBKsWUN.jpg",
     },
-
     {
       title: "Slice of Life",
       image:
@@ -96,7 +92,6 @@ const GenresPage = () => {
         "https://s4.anilist.co/file/anilistcdn/media/anime/banner/108632-yeLbrgPN4Oni.jpg",
     },
   ]);
-
   const [formatsInfo, setFormatsInfo] = useState([
     {
       title: "TV",
@@ -134,7 +129,6 @@ const GenresPage = () => {
         "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11757-TlEEV9weG4Ag.jpg",
     },
   ]);
-
   const [seasonsInfo, setSeasonsInfo] = useState([
     {
       title: "WINTER",
@@ -180,11 +174,9 @@ const GenresPage = () => {
     },
   ]);
   const navigate = useNavigate();
-
   return (
     <>
       <Navbar></Navbar>
-
       <h1 className="genres-title">Genres</h1>
       <div className="genresdiv">
         {genresinfo.map((genreinfo) => {
@@ -192,9 +184,12 @@ const GenresPage = () => {
             <div
               key={uuidv4()}
               onClick={(e) => {
-                navigate("/filtered/genre", {
-                  state: { type: "genre", value: e.target.innerText },
-                });
+                navigate(
+                  "/filtered/genre/" + e.target.innerText.toLowerCase(),
+                  {
+                    state: { type: "genre", value: e.target.innerText },
+                  }
+                );
               }}
               className="genre"
               style={{
@@ -212,12 +207,16 @@ const GenresPage = () => {
           return (
             <div
               onClick={(e) => {
-                navigate("/filtered/format", {
-                  state: {
-                    type: "format",
-                    value: e.target.innerText.replaceAll(" ", "_"),
-                  },
-                });
+                navigate(
+                  "/filtered/format/" +
+                    e.target.innerText.replaceAll(" ", "_").toLowerCase(),
+                  {
+                    state: {
+                      type: "format",
+                      value: e.target.innerText.replaceAll(" ", "_"),
+                    },
+                  }
+                );
               }}
               key={uuidv4()}
               className="format"
@@ -230,7 +229,6 @@ const GenresPage = () => {
           );
         })}
       </div>
-
       <h1 className="seasons-title">Seasons</h1>
       <div className="seasonsdiv">
         {seasonsInfo.map((seasonInfo) => {
@@ -238,9 +236,12 @@ const GenresPage = () => {
             <div
               key={uuidv4()}
               onClick={(e) => {
-                navigate("/filtered/season", {
-                  state: { type: "season", value: e.target.innerText },
-                });
+                navigate(
+                  "/filtered/season/" + e.target.innerText.toLowerCase(),
+                  {
+                    state: { type: "season", value: e.target.innerText },
+                  }
+                );
               }}
               style={{
                 backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(${seasonInfo.image})`,
@@ -252,7 +253,6 @@ const GenresPage = () => {
           );
         })}
       </div>
-
       <h1 className="statuses-title">Status</h1>
       <div className="statusesdiv">
         {statusesInfo.map((statusInfo) => {
@@ -260,12 +260,16 @@ const GenresPage = () => {
             <div
               key={uuidv4()}
               onClick={(e) => {
-                navigate("/filtered/status", {
-                  state: {
-                    type: "status",
-                    value: e.target.innerText.replaceAll(" ", "_"),
-                  },
-                });
+                navigate(
+                  "/filtered/status/" +
+                    e.target.innerText.replaceAll(" ", "_").toLowerCase(),
+                  {
+                    state: {
+                      type: "status",
+                      value: e.target.innerText.replaceAll(" ", "_"),
+                    },
+                  }
+                );
               }}
               style={{
                 backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(${statusInfo.image})`,
@@ -280,5 +284,4 @@ const GenresPage = () => {
     </>
   );
 };
-
 export default GenresPage;

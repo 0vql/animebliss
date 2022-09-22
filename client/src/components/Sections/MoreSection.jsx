@@ -1,11 +1,8 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
 import InfiniteSection from "./InfiniteSection";
 import Navbar from "./Navbar";
 const MoreSection = () => {
   const location = useLocation();
-
-  console.log(location.state.url);
   return (
     <>
       <Navbar></Navbar>
@@ -21,7 +18,6 @@ const MoreSection = () => {
       >
         {location.state.section}
       </h1>
-
       <InfiniteSection
         itemlimit={28}
         id={location.state.section.toLowerCase()}
@@ -31,5 +27,4 @@ const MoreSection = () => {
     </>
   );
 };
-
 export default MoreSection;

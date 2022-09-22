@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import GridRenderer from "../Layouts/GridRenderer.jsx";
-import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { v4 as uuidv4 } from "uuid";
 import toast, { Toaster } from "react-hot-toast";
@@ -11,16 +9,7 @@ import {
   faArrowLeftLong,
   faArrowRightLong,
 } from "@fortawesome/free-solid-svg-icons";
-
-export default function InfiniteSection({
-  url,
-  sectiontitle,
-  itemlimit,
-  isGenresPage,
-  isUpcoming,
-  id,
-  querytype,
-}) {
+const InfiniteSection = ({ url, sectiontitle, itemlimit, id, querytype }) => {
   const [fetchedData, setFetchedData] = useState([]);
   const [currpage, setCurrpage] = useState(1);
   const [isAnimate, setIsAnimate] = useState(false);
@@ -33,11 +22,9 @@ export default function InfiniteSection({
         for (let i = 1; i <= 5; i++) {
           temp.push(currpage + i);
         }
-
         setPageNumbers(temp);
       }
     }
-
     if (e.target.classList.contains("previousPageButton")) {
       if (currpage % 5 === 1) {
         let temp = [];
@@ -48,7 +35,6 @@ export default function InfiniteSection({
       }
     }
   };
-
   useEffect(() => {
     setCurrpage(1);
   }, [url]);
@@ -57,26 +43,18 @@ export default function InfiniteSection({
     if (currpage > 1) {
       document.querySelector("#" + id).scrollIntoView();
     }
-    let finalurl = "";
-    if (id === "filterresults")
-      finalurl = url + querytype + "page=" + currpage + "&perPage=" + itemlimit;
-    else
-      finalurl = url + querytype + "page=" + currpage + "&perPage=" + itemlimit;
     axios
-      .get(finalurl)
-
+      .get(url + querytype + "page=" + currpage + "&perPage=" + itemlimit)
       .then((data) => {
         if (data.data.hasNextPage) {
           setHasNextPage(true);
         } else {
           setHasNextPage(false);
         }
-
         setFetchedData(data.data.results);
         setIsAnimate(true);
       });
   }, [currpage, url]);
-
   return (
     <>
       <section
@@ -96,7 +74,6 @@ export default function InfiniteSection({
             >
               {sectiontitle}
             </h1>
-
             <GridRenderer
               isAnimate={isAnimate}
               finalQuery={fetchedData}
@@ -117,15 +94,7 @@ export default function InfiniteSection({
                   <FontAwesomeIcon icon={faArrowLeftLong}></FontAwesomeIcon>{" "}
                   &nbsp;Previous
                 </button>
-
-                <div
-                  style={{
-                    display: "flex",
-                    gap: 40,
-                    justifyContent: "center",
-                  }}
-                  className="pageindex"
-                >
+                <div className="pageindex">
                   {pageNumbers.map((pageNumber) => (
                     <button
                       className="btn-pageindex"
@@ -142,7 +111,6 @@ export default function InfiniteSection({
                     </button>
                   ))}
                 </div>
-
                 <button
                   className="nextPageButton"
                   onClick={(e) => {
@@ -180,4 +148,5 @@ export default function InfiniteSection({
       </section>
     </>
   );
-}
+};
+export default InfiniteSection;

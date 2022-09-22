@@ -5,18 +5,18 @@ import logo from "../../assets/images/image.png";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React, { useRef } from "react";
-import { toast } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
 export default function Navbar() {
-  const [isFirstRender, setIsFirstRender] = useState(false);
-
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          setIcon("nav__toggler");
-          setActive("nav__menu");
+          if (active === "nav__menu") {
+            setIcon("nav__toggler");
+            setActive("nav__menu");
+          }
         }
       }
       document.addEventListener("mousedown", handleClickOutside);
@@ -25,18 +25,11 @@ export default function Navbar() {
       };
     }, [ref]);
   }
-
-  useEffect(() => {
-    setIsFirstRender(true);
-  }, []);
-
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
   const location = useLocation();
-  const [input, setInput] = useState("");
-
   const navigate = useNavigate();
-  const searchAnime = async () => {
+  const searchAnime = async (input) => {
     return fetch("https://consumet-api.herokuapp.com/meta/anilist/" + input)
       .then((response) => {
         return response.json();
@@ -50,28 +43,26 @@ export default function Navbar() {
         });
       });
   };
-  useEffect(() => {
-    if (input !== "") {
-      searchAnime();
-    }
-  }, [input]);
 
   const [value, setValue] = useState("");
-
   const navToggle = () => {
     if (active === "nav__menu") {
       setActive("nav__menu nav__active");
     } else {
       setActive("nav__menu");
     }
-
     if (icon === "nav__toggler") {
       setIcon("nav__toggler toggle");
     } else setIcon("nav__toggler");
   };
-
   return (
     <nav className="nav" ref={wrapperRef}>
+      <Toaster
+        toastOptions={{
+          duration: 1000,
+        }}
+        position="top-right"
+      ></Toaster>
       <div className="nav-side-div">
         <div
           onClick={(e) => {
@@ -94,7 +85,6 @@ export default function Navbar() {
             style={{ color: "white", padding: 0 }}
             alt=""
           />
-
           <h3 className="brand-title">Animebliss</h3>
         </div>
         <FontAwesomeIcon
@@ -102,14 +92,14 @@ export default function Navbar() {
           icon={faMagnifyingGlass}
           style={{ color: "white", fontSize: 25 }}
         ></FontAwesomeIcon>
-
         <input
           onInput={(e) => {
             setValue(e.target.value);
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              setInput(e.target.value);
+              if (e.target.value === "") toast.error("Input cannot be empty!");
+              else searchAnime(e.target.value);
             }
           }}
           placeholder="Search for anime"
@@ -149,11 +139,10 @@ export default function Navbar() {
           >
             <span className="nav__link">Recent Ep</span>
           </li>
-
           <li
             onClick={(e) => {
               e.preventDefault();
-              navigate("/genres");
+              navigate("/filter");
             }}
             className="nav__item"
           >
@@ -162,7 +151,7 @@ export default function Navbar() {
           <li
             onClick={(e) => {
               e.preventDefault();
-              navigate("/genres");
+              navigate("/watchlist");
             }}
             className="nav__item"
           >
@@ -190,10 +179,6 @@ export default function Navbar() {
           </div>
         </ul>
       </div>
-      {/* <div className="auth">
-        <button>Login</button>
-        <button>Signup</button>
-      </div> */}
       <div onClick={navToggle} className={icon}>
         <div className="line1"></div>
         <div className="line2"></div>

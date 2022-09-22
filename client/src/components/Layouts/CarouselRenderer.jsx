@@ -18,24 +18,19 @@ export default function CarouselRenderer({
   const navigate = useNavigate();
   const breakPoints = [
     { width: 1, itemsToShow: isUpcoming ? 2 : 3 },
-
     { width: 580, itemsToShow: isUpcoming ? 2 : 4 },
-
     { width: 800, itemsToShow: isUpcoming ? 3 : 4 },
     { width: 900, itemsToShow: isUpcoming ? 3 : 5 },
     { width: 1100, itemsToShow: isUpcoming ? 3 : 5 },
     { width: 1270, itemsToShow: isUpcoming ? 4 : 5 },
-
     { width: 1410, itemsToShow: isUpcoming ? 4 : 6 },
     { width: 1760, itemsToShow: isUpcoming ? 4 : 7 },
     { width: 1920, itemsToShow: isUpcoming ? 4 : 8 },
   ];
-
   return (
     <div className="carouselinstance">
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         {rowTitle && <h1 className="row-title">{rowTitle}</h1>}
-
         {!isUpcoming && rowTitle !== "Recommendations" && (
           <a
             onClick={(event) => {

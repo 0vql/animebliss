@@ -1,7 +1,6 @@
 import InfiniteSection from "../Sections/InfiniteSection";
 import Navbar from "../Sections/Navbar";
 import React from "react";
-
 const MoviesPage = () => {
   return (
     <>
@@ -18,5 +17,4 @@ const MoviesPage = () => {
     </>
   );
 };
-
 export default MoviesPage;

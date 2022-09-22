@@ -3,23 +3,13 @@ import { SharedState } from "../../App";
 import { useNavigate } from "react-router-dom";
 import { StarFilled } from "@ant-design/icons";
 import "./GridCard.css";
-export default function GridCard({
-  title,
-  image,
-  episodeNumber,
-  year,
-  rating,
-
-  id,
-}) {
+const GridCard = ({ title, image, episodeNumber, year, rating, id }) => {
   const navigate = useNavigate();
   const animestate = useContext(SharedState);
   async function fetchVideo(id) {
     animestate.setVideoIsLoading(true);
-
     navigate("/watch/" + id);
   }
-
   return (
     <>
       <div
@@ -39,7 +29,6 @@ export default function GridCard({
             <span style={{ color: "white" }}>{rating / 10}</span>
           </div>
         </div>
-
         {episodeNumber > 0 && (
           <h5 className="gridcard-epnumber">Episode {episodeNumber}</h5>
         )}
@@ -50,4 +39,5 @@ export default function GridCard({
       </div>
     </>
   );
-}
+};
+export default GridCard;

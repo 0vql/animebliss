@@ -3,7 +3,6 @@ import "./UpcomingCard.css";
 const UpcomingCard = ({
   title,
   image,
-
   episodeNum,
   trailerVideoId,
   setIsPlaying,
@@ -16,7 +15,6 @@ const UpcomingCard = ({
         onClick={(e) => {
           e.preventDefault();
           setTrailerId(trailerVideoId);
-
           setIsPlaying(true);
         }}
         className="upcomingcard-wrapper"
@@ -27,13 +25,11 @@ const UpcomingCard = ({
             backgroundImage: `url(${image})`,
           }}
         ></div>
-
         {episodeNum > 0 && (
           <h5 style={{ color: "white", fontWeight: "lighter" }}>
             Episode {episodeNum}
           </h5>
         )}
-
         <a
           onClick={(e) => {
             e.preventDefault();
@@ -47,5 +43,4 @@ const UpcomingCard = ({
     </>
   );
 };
-
 export default UpcomingCard;

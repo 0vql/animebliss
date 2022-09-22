@@ -15,7 +15,6 @@ export default function RecommendCard({
   const navigate = useNavigate();
   async function fetchVideo(id) {
     animestate.setVideoIsLoading(true);
-
     navigate("/watch/" + id);
   }
   return (
@@ -37,11 +36,9 @@ export default function RecommendCard({
             {rating / 10}
           </div>
         </div>
-
         {episodeNumber > 0 && (
           <h5 className="epnumber">Episode {episodeNumber}</h5>
         )}
-
         <a href="/" className="recommend-card-title">
           <TextTruncate text={title} line={2}></TextTruncate>
         </a>

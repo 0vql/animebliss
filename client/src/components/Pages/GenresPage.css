@@ -24,7 +24,6 @@
 .status,
 .season {
   cursor: pointer;
-
   background-color: rgb(0, 0, 0, 0.5);
   background-size: cover;
   background-position: center;
@@ -33,7 +32,6 @@
   justify-content: center;
   color: white;
   align-items: center;
-
   height: 155px;
   width: 270px;
   border-radius: 5px;
@@ -42,17 +40,18 @@
 .formats-title,
 .seasons-title,
 .statuses-title {
-  margin-top: 80px;
   color: white;
   margin-bottom: 10px;
   font-size: 2.5rem;
+  margin-top: 40px;
   margin-left: 2.6%;
 }
-
+.genres-title {
+  margin-top: 80px;
+}
 .statusesdiv {
   padding-bottom: 50px;
 }
-
 @media screen and (max-width: 560px) {
   .genres-title,
   .formats-title,
@@ -92,7 +91,6 @@
     width: 46vw;
   }
 }
-
 @media screen and (max-width: 300px) {
   .genresdiv div,
   .formatsdiv div,

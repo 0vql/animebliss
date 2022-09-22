@@ -70,7 +70,6 @@
     font-size: 1.5rem;
   }
 }
-
 .stardiv {
   color: yellow;
   background-color: rgba(0, 0, 0, 0.6);
@@ -80,7 +79,6 @@
   font-size: 1.35rem;
   display: flex;
   gap: 4px;
-
   justify-content: center;
   align-items: center;
 }
@@ -94,14 +92,12 @@
   color: white;
   font-weight: lighter;
 }
-
 @media screen and (min-width: 1300px) {
   .gridcard-card {
     height: 340px;
     width: 230px;
   }
 }
-
 @media screen and (min-width: 1800px) {
   .gridcard-card {
     height: 340px;

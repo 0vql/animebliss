@@ -8,24 +8,19 @@ import {
   Tooltip,
 } from "@vime/react";
 import toast, { Toaster } from "react-hot-toast";
-
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "@vime/core/themes/default.css";
 import "@vime/core/themes/light.css";
 export default function AnimePlayer({ src, animeInfoUrl }) {
   const [savedTime, setSavedTime] = useState(null);
-
   useEffect(() => {
-    console.log(animeInfoUrl);
     if (localStorage.getItem(animeInfoUrl) !== null) {
       setSavedTime(Number(localStorage.getItem(animeInfoUrl)));
     }
-
     localStorage.setItem("recentlywatched", animeInfoUrl);
   }, []);
   const [time, setTime] = useState(0);
-
   useEffect(() => {
     if (src) setUrl(src[0]);
     else {
@@ -106,7 +101,6 @@ export default function AnimePlayer({ src, animeInfoUrl }) {
                       transform="matrix(.1 0 0 -.1 0 512)"
                     ></path>
                   </svg>
-
                   <Tooltip>- 10s</Tooltip>
                 </Control>
                 <PlaybackControl hideTooltip keys="k/" />
@@ -131,7 +125,6 @@ export default function AnimePlayer({ src, animeInfoUrl }) {
                       transform="matrix(.1 0 0 -.1 0 512)"
                     ></path>
                   </svg>
-
                   <Tooltip className="text-xs">+ 10s</Tooltip>
                 </Control>
               </Controls>

@@ -1,13 +1,10 @@
 import Carousel from "react-elastic-carousel";
-
 import HeaderCarouselCard from "../Cards/HeaderCarouselCard";
 import { v4 as uuidv4 } from "uuid";
 import { useRef } from "react";
-
 const HeaderCarouselRenderer = ({ finalResults }) => {
   const carouselRef = useRef(null);
   let resetTimeout;
-
   return (
     <Carousel
       enableAutoPlay={true}
@@ -48,5 +45,4 @@ const HeaderCarouselRenderer = ({ finalResults }) => {
     </Carousel>
   );
 };
-
 export default HeaderCarouselRenderer;

@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import CarouselCard from "../Cards/CarouselCard";
 import { motion } from "framer-motion";
-
 export default function VerticalCarousel({ finalQuery, rowTitle, isAnimated }) {
   return (
     <div className="vertical-grid-container">

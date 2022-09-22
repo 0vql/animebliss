@@ -5,10 +5,8 @@ import "./GenresPage.css";
 import { useState } from "react";
 import Navbar from "../Sections/Navbar";
 setConfiguration({ breakpoints: [768, 1170, 1500, 1700, 1800, 1900] });
-
 export default function GenresPage({ setAnimeInfo }) {
   const location = useLocation();
-
   const [queryUrl, setQueryUrl] = useState(
     location.state.type === "genre"
       ? "https://consumet-api.herokuapp.com/meta/anilist/advanced-search?genres=[" +
@@ -21,11 +19,9 @@ export default function GenresPage({ setAnimeInfo }) {
           "=" +
           location.state.value
   );
-
   return (
     <>
       <Navbar></Navbar>
-
       {queryUrl && queryUrl !== "" && (
         <InfiniteSection
           isGenresPage={true}

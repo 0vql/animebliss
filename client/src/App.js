@@ -1,22 +1,19 @@
 import Login from "./components/Pages/Login";
 import "./App.css";
-import Genresv2 from "./components/Pages/GenresPage";
+import GenresPage from "./components/Pages/GenresPage";
 import Home from "./components/Pages/Home";
 import MoreSection from "./components/Sections/MoreSection";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ClockLoader from "react-spinners/MoonLoader";
 import AnimePlayerPage from "./components/Pages/AnimePlayerPage";
-import MoviesSection from "./components/Pages/MoviesPage";
+import MoviesPage from "./components/Pages/MoviesPage";
 import RecentPage from "./components/Pages/RecentPage";
 import SearchResults from "./components/Pages/SearchResults";
 import FilteredPage from "./components/Pages/FilteredPage";
 export const SharedState = React.createContext();
 const App = () => {
-  const [animeInfo, setAnimeInfo] = useState(null);
   const [videoIsLoading, setVideoIsLoading] = useState(false);
-  useEffect(() => {}, [animeInfo]);
-
   const override = {
     position: "fixed",
     zIndex: 800000,
@@ -24,16 +21,12 @@ const App = () => {
     right: 0,
     top: 0,
     bottom: 0,
-
     margin: "auto",
-
     borderColor: "red",
   };
-
   return (
     <SharedState.Provider
       value={{
-        setAnimeInfo,
         videoIsLoading,
         setVideoIsLoading,
       }}
@@ -51,39 +44,36 @@ const App = () => {
         <BrowserRouter>
           <>
             <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/recentep" element={<RecentPage></RecentPage>} />
-              <Route path="/genres" element={<Genresv2 />} />
+              <Route exact path="/login" element={<Login />} />
               <Route
+                exact
+                path="/recentep"
+                element={<RecentPage></RecentPage>}
+              />
+              <Route exact path="/filter" element={<GenresPage />} />
+              <Route
+                exact
                 path="/more/:section"
                 element={<MoreSection></MoreSection>}
               />
-
+              <Route exact path="/watch/:id" element={<AnimePlayerPage />} />
+              <Route exact path="/signup" element={<Home />} />
+              <Route exact path="/" element={<Home />} />
               <Route
-                path="/watch/:id"
-                element={<AnimePlayerPage animeInfo={animeInfo} />}
-              />
-              <Route path="/signup" element={<Home />} />
-
-              <Route path="/" element={<Home />} />
-              <Route
+                exact
                 path="/movies"
                 element={
-                  <MoviesSection
-                    setAnimeInfo={setAnimeInfo}
+                  <MoviesPage
                     setVideoIsLoading={setVideoIsLoading}
-                  ></MoviesSection>
+                  ></MoviesPage>
                 }
               />
               <Route
-                path="/filtered/:value"
+                exact
+                path="/filtered/:type/:value"
                 element={<FilteredPage></FilteredPage>}
               />
-
-              <Route
-                path="/search"
-                element={<SearchResults setAnimeInfo={setAnimeInfo} />}
-              />
+              <Route exact path="/search" element={<SearchResults />} />
             </Routes>
           </>
         </BrowserRouter>
@@ -91,5 +81,4 @@ const App = () => {
     </SharedState.Provider>
   );
 };
-
 export default App;

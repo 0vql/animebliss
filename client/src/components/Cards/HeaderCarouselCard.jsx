@@ -21,22 +21,17 @@ export default function HeaderCarouselCard({
   coversmall,
 }) {
   const navigate = useNavigate();
-
   const animestate = useContext(SharedState);
-
   async function fetchVideo(id) {
     animestate.setVideoIsLoading(true);
-
     navigate("/watch/" + id);
   }
-
   let regexeddescription = description.replaceAll(/<\/?[\w\s]*>|<.+[\W]>/g, "");
   regexeddescription = regexeddescription.substring(
     0,
     regexeddescription.indexOf("("),
     4
   );
-
   return (
     <>
       <div
@@ -52,7 +47,6 @@ export default function HeaderCarouselCard({
               {" "}
               <PlayCircleOutlined /> TV
             </p>
-
             <p className="anime-info-item">
               <FontAwesomeIcon icon={faListOl} /> {epcount} Episodes
             </p>
@@ -68,18 +62,16 @@ export default function HeaderCarouselCard({
             <TextTruncate text={regexeddescription} line={4}></TextTruncate>
           </p>
         </div>
-        <a
+        <button
           onClick={(e) => {
             e.preventDefault();
             fetchVideo(id);
           }}
           className="btn btn-watchnow"
-          href="/login"
         >
-          {" "}
           <PlayCircleOutlined />
           &nbsp;&nbsp;WATCH
-        </a>
+        </button>
       </div>
     </>
   );
