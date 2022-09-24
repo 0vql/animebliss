@@ -7,7 +7,7 @@ import { faFileCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { v4 as uuidv4 } from "uuid";
 import { useParams } from "react-router-dom";
-import ReccomendCarousel from "../Layouts/ReccomendCarousel";
+import RecommendCarousel from "../Layouts/RecommendCarousel";
 import {
   StarFilled,
   CalendarOutlined,
@@ -26,7 +26,7 @@ const AnimePlayerPage = () => {
   const [adaptation, setAdaptation] = useState(null);
   const [description, setDescription] = useState(null);
   const [anime, setAnime] = useState(null);
-  const [selectedOption, setSelectedOption] = useState(1);
+  const [selectedOption, setSelectedOption] = useState("1");
   const [currentStreamUrl, setCurrentStreamUrl] = useState(null);
   const [currentId, setCurrentId] = useState("");
   const epArray = [];
@@ -195,10 +195,10 @@ const AnimePlayerPage = () => {
             </div>
           </div>
           {anime.recommendations && (
-            <ReccomendCarousel
+            <RecommendCarousel
               rowTitle="Recommendations"
               finalQuery={anime.recommendations}
-            ></ReccomendCarousel>
+            ></RecommendCarousel>
           )}
           <AnimeSection
             url={"https://consumet-api.herokuapp.com/meta/anilist/trending"}

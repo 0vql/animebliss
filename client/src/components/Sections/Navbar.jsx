@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React, { useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
-export default function Navbar() {
+const Navbar = () => {
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
   function useOutsideAlerter(ref) {
@@ -186,4 +186,6 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;

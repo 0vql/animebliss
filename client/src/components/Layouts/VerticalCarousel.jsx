@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import CarouselCard from "../Cards/CarouselCard";
 import { motion } from "framer-motion";
-export default function VerticalCarousel({ finalQuery, rowTitle, isAnimated }) {
+const VerticalCarousel = ({ finalQuery, rowTitle, isAnimated }) => {
   return (
     <div className="vertical-grid-container">
       <h1 className="row-title" style={{ marginLeft: 2, color: "#D8D8D8" }}>
@@ -31,4 +31,5 @@ export default function VerticalCarousel({ finalQuery, rowTitle, isAnimated }) {
       </div>
     </div>
   );
-}
+};
+export default VerticalCarousel;

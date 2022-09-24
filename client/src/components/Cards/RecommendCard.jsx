@@ -4,13 +4,7 @@ import { SharedState } from "../../App";
 import "./RecommendCard.css";
 import { useNavigate } from "react-router-dom";
 import { StarFilled } from "@ant-design/icons";
-export default function RecommendCard({
-  title,
-  image,
-  episodeNumber,
-  rating,
-  id,
-}) {
+const RecommendCard = ({ title, image, episodeNumber, rating, id }) => {
   const animestate = useContext(SharedState);
   const navigate = useNavigate();
   async function fetchVideo(id) {
@@ -45,4 +39,6 @@ export default function RecommendCard({
       </div>
     </>
   );
-}
+};
+
+export default RecommendCard;

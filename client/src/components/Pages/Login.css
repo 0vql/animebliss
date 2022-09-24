@@ -6,3 +6,10 @@
   background-position: center;
   background-image: url("../../assets/images/construction.png");
 }
+
+@media screen and (max-width: 1000px) {
+  .construction-div {
+    height: 50vh;
+    width: 50vw;
+  }
+}

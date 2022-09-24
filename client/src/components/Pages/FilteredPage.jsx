@@ -5,7 +5,7 @@ import "./GenresPage.css";
 import { useState } from "react";
 import Navbar from "../Sections/Navbar";
 setConfiguration({ breakpoints: [768, 1170, 1500, 1700, 1800, 1900] });
-export default function GenresPage({ setAnimeInfo }) {
+const GenresPage = ({ setAnimeInfo }) => {
   const location = useLocation();
   const [queryUrl, setQueryUrl] = useState(
     location.state.type === "genre"
@@ -34,4 +34,6 @@ export default function GenresPage({ setAnimeInfo }) {
       )}
     </>
   );
-}
+};
+
+export default GenresPage;

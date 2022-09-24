@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "@vime/core/themes/default.css";
 import "@vime/core/themes/light.css";
-export default function AnimePlayer({ src, animeInfoUrl }) {
+const AnimePlayer = ({ src, animeInfoUrl }) => {
   const [savedTime, setSavedTime] = useState(null);
   useEffect(() => {
     if (localStorage.getItem(animeInfoUrl) !== null) {
@@ -135,4 +135,5 @@ export default function AnimePlayer({ src, animeInfoUrl }) {
       )}
     </>
   );
-}
+};
+export default AnimePlayer;

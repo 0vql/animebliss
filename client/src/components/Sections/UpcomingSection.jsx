@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CarouselRenderer from "../Layouts/CarouselRenderer";
 import TrailerPlayer from "../Players/TrailerPlayer";
 import axios from "axios";
-export default function UpcomingSection() {
+const UpcomingSection = () => {
   const [trailerId, setTrailerId] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [upcoming, setUpComing] = useState([]);
@@ -42,4 +42,6 @@ export default function UpcomingSection() {
       ></TrailerPlayer>
     </section>
   );
-}
+};
+
+export default UpcomingSection;

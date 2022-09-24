@@ -4,7 +4,7 @@ import CarouselCard from "../Cards/CarouselCard";
 import UpcomingCard from "../Cards/UpcomingCard";
 import { RightOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-export default function CarouselRenderer({
+const CarouselRenderer = ({
   finalQuery,
   rowTitle,
   isRecent,
@@ -14,7 +14,7 @@ export default function CarouselRenderer({
   setIsPlaying,
   setTrailerId,
   url,
-}) {
+}) => {
   const navigate = useNavigate();
   const breakPoints = [
     { width: 1, itemsToShow: isUpcoming ? 2 : 3 },
@@ -85,4 +85,6 @@ export default function CarouselRenderer({
       </Carousel>
     </div>
   );
-}
+};
+
+export default CarouselRenderer;

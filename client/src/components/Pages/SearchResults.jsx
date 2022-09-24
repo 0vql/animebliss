@@ -3,7 +3,7 @@ import { setConfiguration } from "react-grid-system";
 import { useLocation } from "react-router-dom";
 import Navbar from "../Sections/Navbar";
 setConfiguration({ breakpoints: [580, 924, 1434, 1767, 2000, 2400] });
-export default function SearchResults({ setAnimeInfo }) {
+const SearchResults = ({ setAnimeInfo }) => {
   const location = useLocation();
   return (
     <>
@@ -22,4 +22,5 @@ export default function SearchResults({ setAnimeInfo }) {
       <GridRenderer finalQuery={location.state.finalResults}></GridRenderer>
     </>
   );
-}
+};
+export default SearchResults;

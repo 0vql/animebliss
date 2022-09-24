@@ -1,5 +1,5 @@
 import CarouselRenderer from "./CarouselRenderer";
-export default function ReccomendCarousel({ finalQuery, rowTitle }) {
+const RecommendCarousel = ({ finalQuery, rowTitle }) => {
   return (
     <>
       <CarouselRenderer
@@ -9,4 +9,6 @@ export default function ReccomendCarousel({ finalQuery, rowTitle }) {
       ></CarouselRenderer>
     </>
   );
-}
+};
+
+export default RecommendCarousel;

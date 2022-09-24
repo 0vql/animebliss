@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TextTruncate from "react-text-truncate";
 import { SharedState } from "../../App";
 import { useNavigate } from "react-router-dom";
-export default function HeaderCarouselCard({
+const HeaderCarouselCard = ({
   duration,
   cover,
   title,
@@ -19,7 +19,7 @@ export default function HeaderCarouselCard({
   description,
   epcount,
   coversmall,
-}) {
+}) => {
   const navigate = useNavigate();
   const animestate = useContext(SharedState);
   async function fetchVideo(id) {
@@ -75,4 +75,6 @@ export default function HeaderCarouselCard({
       </div>
     </>
   );
-}
+};
+
+export default HeaderCarouselCard;
