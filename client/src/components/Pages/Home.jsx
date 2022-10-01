@@ -18,12 +18,11 @@ const Home = () => {
       <Header></Header>
       <UpcomingSection></UpcomingSection>
 
-
-      {/* <AnimeSection
+      <AnimeSection
         url={"https://consumet-api.herokuapp.com/meta/anilist/recent-episodes"}
         id={"recent"}
         sectiontitle={"Recent"}
-      ></AnimeSection> */}
+      ></AnimeSection>
       <AnimeSection
         url={"https://consumet-api.herokuapp.com/meta/anilist/trending"}
         id={"trending"}
