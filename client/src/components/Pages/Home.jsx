@@ -18,11 +18,12 @@ const Home = () => {
       <Header></Header>
       <UpcomingSection></UpcomingSection>
 
-      <AnimeSection
+
+      {/* <AnimeSection
         url={"https://consumet-api.herokuapp.com/meta/anilist/recent-episodes"}
         id={"recent"}
         sectiontitle={"Recent"}
-      ></AnimeSection>
+      ></AnimeSection> */}
       <AnimeSection
         url={"https://consumet-api.herokuapp.com/meta/anilist/trending"}
         id={"trending"}
@@ -41,7 +42,6 @@ const Home = () => {
         querytype={"?"}
       ></InfiniteSection>
       {loadcontext.setVideoIsLoading(false)}
-
       <ScrollToTop
         style={{
           border: "1px solid dodgerblue",

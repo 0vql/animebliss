@@ -26,7 +26,7 @@ const AnimePlayerPage = () => {
   const [adaptation, setAdaptation] = useState(null);
   const [description, setDescription] = useState(null);
   const [anime, setAnime] = useState(null);
-  const [selectedOption, setSelectedOption] = useState("1");
+  const [selectedOption, setSelectedOption] = useState(1);
   const [currentStreamUrl, setCurrentStreamUrl] = useState(null);
   const [currentId, setCurrentId] = useState("");
   const epArray = [];
@@ -126,10 +126,10 @@ const AnimePlayerPage = () => {
                         className="epindex"
                         style={{
                           backgroundColor:
-                            selectedOption === String(ep) ? "red" : "#8230c6",
+                            selectedOption === ep ? "red" : "#8230c6",
                         }}
                         onClick={(e) => {
-                          setSelectedOption(e.target.innerText);
+                          setSelectedOption(Number(e.target.innerText));
                         }}
                       >
                         {ep}

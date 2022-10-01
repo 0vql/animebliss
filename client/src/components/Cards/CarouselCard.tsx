@@ -1,12 +1,24 @@
 import { useContext } from "react";
+// @ts-ignore
 import TextTruncate from "react-text-truncate";
-import { SharedState } from "../../App";
+// @ts-ignore
+
+import { SharedState } from "../../App.jsx";
+import './GridCard.jsx'
 import { useNavigate } from "react-router-dom";
 import "./CarouselCard.css";
-const CarouselCard = ({ title, image, episodeNumber, id }) => {
+import React from 'react';
+type CardInfo = {
+  title: string,
+  image: string,
+  episodeNumber: number,
+  id: string,
+}
+const CarouselCard = ({ title, image, episodeNumber, id }: CardInfo) => {
   const navigate = useNavigate();
   const animestate = useContext(SharedState);
-  async function fetchVideo(id) {
+  async function fetchVideo(id: string) {
+    // @ts-ignore
     animestate.setVideoIsLoading(true);
     navigate("/watch/" + id);
   }
