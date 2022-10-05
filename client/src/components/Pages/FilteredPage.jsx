@@ -9,12 +9,12 @@ const GenresPage = () => {
   const location = useLocation();
   const [queryUrl, setQueryUrl] = useState(
     location.state.type === "genre"
-      ? "https://consumet-api.herokuapp.com/meta/anilist/advanced-search?genres=[" +
+      ? "https://api.consumet.org/meta/anilist/advanced-search?genres=[" +
           '"' +
           location.state.value +
           '"' +
           "]"
-      : "https://consumet-api.herokuapp.com/meta/anilist/advanced-search?" +
+      : "https://api.consumet.org/meta/anilist/advanced-search?" +
           location.state.type +
           "=" +
           location.state.value

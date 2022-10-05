@@ -7,7 +7,7 @@ const MoviesPage = () => {
       <Navbar></Navbar>
       <InfiniteSection
         url={
-          "https://consumet-api.herokuapp.com/meta/anilist/advanced-search?format=MOVIE"
+          "https://api.consumet.org/meta/anilist/advanced-search?format=MOVIE"
         }
         itemlimit={21}
         sectiontitle={"Top Anime Movies"}

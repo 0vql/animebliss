@@ -3,7 +3,7 @@ import { setConfiguration } from "react-grid-system";
 import { useLocation } from "react-router-dom";
 import Navbar from "../Sections/Navbar";
 setConfiguration({ breakpoints: [580, 924, 1434, 1767, 2000, 2400] });
-const SearchResults = ({ setAnimeInfo }) => {
+const SearchResults = () => {
   const location = useLocation();
   return (
     <>

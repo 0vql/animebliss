@@ -7,7 +7,7 @@ const Header = () => {
   const [finalResults, setFinalResults] = useState([]);
   useEffect(() => {
     axios
-      .get("https://consumet-api.herokuapp.com/meta/anilist/trending")
+      .get("https://api.consumet.org/meta/anilist/trending")
       .then((data) => {
         setFinalResults(data.data.results);
       }, []);

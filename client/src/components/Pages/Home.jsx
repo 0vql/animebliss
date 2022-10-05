@@ -19,22 +19,22 @@ const Home = () => {
       <UpcomingSection></UpcomingSection>
 
       <AnimeSection
-        url={"https://consumet-api.herokuapp.com/meta/anilist/recent-episodes"}
+        url={"https://api.consumet.org/meta/anilist/recent-episodes"}
         id={"recent"}
         sectiontitle={"Recent"}
       ></AnimeSection>
       <AnimeSection
-        url={"https://consumet-api.herokuapp.com/meta/anilist/trending"}
+        url={"https://api.consumet.org/meta/anilist/trending"}
         id={"trending"}
         sectiontitle={"Trending"}
       ></AnimeSection>
       <AnimeSection
-        url={"https://consumet-api.herokuapp.com/meta/anilist/advanced-search"}
+        url={"https://api.consumet.org/meta/anilist/advanced-search"}
         id={"special"}
         sectiontitle={"Special"}
       ></AnimeSection>
       <InfiniteSection
-        url={"https://consumet-api.herokuapp.com/meta/anilist/popular"}
+        url={"https://api.consumet.org/meta/anilist/popular"}
         itemlimit={21}
         sectiontitle={"Most Popular"}
         id="popular"

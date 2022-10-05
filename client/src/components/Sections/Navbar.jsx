@@ -30,7 +30,7 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const searchAnime = async (input) => {
-    return fetch("https://consumet-api.herokuapp.com/meta/anilist/" + input)
+    return fetch("https://api.consumet.org/meta/anilist/" + input)
       .then((response) => {
         return response.json();
       })

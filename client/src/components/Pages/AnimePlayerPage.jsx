@@ -36,7 +36,7 @@ const AnimePlayerPage = () => {
   }, [id]);
   const initialFetch = async () => {
     return await axios
-      .get("https://consumet-api.herokuapp.com/meta/anilist/info/" + id)
+      .get("https://api.consumet.org/meta/anilist/info/" + id)
       .then((res) => {
         setAnime(res.data);
         setCurrentId(res.data.episodes[selectedOption - 1].id);
@@ -73,7 +73,7 @@ const AnimePlayerPage = () => {
   useEffect(() => {
     if (currentId !== "")
       fetchVideoById(
-        " https://consumet-api.herokuapp.com/meta/anilist/watch/" + currentId
+        " https://api.consumet.org/meta/anilist/watch/" + currentId
       );
   }, [currentId]);
   useEffect(() => {
@@ -89,7 +89,7 @@ const AnimePlayerPage = () => {
             <div className="vime-container">
               <AnimePlayer
                 animeInfoUrl={
-                  " https://consumet-api.herokuapp.com/meta/anilist/watch/" +
+                  " https://api.consumet.org/meta/anilist/watch/" +
                   currentId
                 }
                 src={currentStreamUrl}
@@ -201,7 +201,7 @@ const AnimePlayerPage = () => {
             ></RecommendCarousel>
           )}
           <AnimeSection
-            url={"https://consumet-api.herokuapp.com/meta/anilist/trending"}
+            url={"https://api.consumet.org/meta/anilist/trending"}
             id={"trending"}
             sectiontitle={"Trending"}
           ></AnimeSection>
