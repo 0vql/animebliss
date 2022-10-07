@@ -29,7 +29,9 @@ const Home = () => {
         sectiontitle={"Trending"}
       ></AnimeSection>
       <AnimeSection
-        url={"https://api.consumet.org/meta/anilist/advanced-search"}
+        url={
+          "https://api.consumet.org/meta/anilist/advanced-search?format=SPECIAL"
+        }
         id={"special"}
         sectiontitle={"Special"}
       ></AnimeSection>

@@ -6,8 +6,6 @@ import { useRef } from "react";
 const HeaderCarouselRenderer = ({ finalResults }) => {
   const carouselRef = useRef(null);
   let resetTimeout;
-  console.log(finalResults);
-  let item = finalResults[9];
   return (
     <Carousel
       enableAutoPlay={true}

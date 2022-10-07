@@ -15,6 +15,7 @@ const InfiniteSection = ({ url, sectiontitle, itemlimit, id, querytype }) => {
   const [isAnimate, setIsAnimate] = useState(false);
   const [hasNextPage, setHasNextPage] = useState(true);
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4, 5]);
+
   const updatePageNumberButtons = (e) => {
     if (e.target.classList.contains("nextPageButton")) {
       if (currpage % 5 === 0) {
@@ -43,6 +44,7 @@ const InfiniteSection = ({ url, sectiontitle, itemlimit, id, querytype }) => {
     if (currpage > 1) {
       document.querySelector("#" + id).scrollIntoView();
     }
+    console.log(url + querytype + "page=" + currpage + "&perPage=" + itemlimit);
     axios
       .get(url + querytype + "page=" + currpage + "&perPage=" + itemlimit)
       .then((data) => {
