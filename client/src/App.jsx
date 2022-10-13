@@ -11,6 +11,7 @@ import MoviesPage from "./components/Pages/MoviesPage";
 import RecentPage from "./components/Pages/RecentPage";
 import SearchResults from "./components/Pages/SearchResults";
 import FilteredPage from "./components/Pages/FilteredPage";
+import Signup from "./components/Pages/Signup";
 export const SharedState = React.createContext();
 const App = () => {
   const [videoIsLoading, setVideoIsLoading] = useState(false);
@@ -57,7 +58,7 @@ const App = () => {
                 element={<MoreSection></MoreSection>}
               />
               <Route exact path="/watch/:id" element={<AnimePlayerPage />} />
-              <Route exact path="/signup" element={<Home />} />
+              <Route exact path="/signup" element={<Signup />} />
               <Route exact path="/" element={<Home />} />
               <Route
                 exact

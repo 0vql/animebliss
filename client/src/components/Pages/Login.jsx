@@ -4,7 +4,7 @@ import Navbar from "../Sections/Navbar";
 const Login = () => {
   return (
     <>
-    <Navbar></Navbar>
+      <Navbar></Navbar>
       <div className="main-wrapper">
         <h1 className="welcome-text">
           <span className="welcome-text-dodgerblue">Hola,</span>
@@ -33,14 +33,18 @@ const Login = () => {
             />
             <div className="extras">
               <div>
-                <input type="checkbox" />
+                <input
+                  name="remembercheckbox"
+                  className="remember-checkbox"
+                  type="checkbox"
+                />
                 <span>Remember me</span>
               </div>
 
               <a href="/forgotpass">Forgot your password?</a>
             </div>
 
-            <button>Sign In</button>
+            <button type="submit">Sign In</button>
           </form>
 
           <button>
