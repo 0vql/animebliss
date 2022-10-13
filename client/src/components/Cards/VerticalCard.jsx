@@ -3,7 +3,7 @@ import TextTruncate from "react-text-truncate";
 import { SharedState } from "../../App.jsx";
 import "./GridCard.jsx";
 import { useNavigate } from "react-router-dom";
-import "./CarouselCard.css";
+import "./VerticalCard.css";
 import React from "react";
 const CarouselCard = ({ title, image, episodeNumber, id }) => {
   const navigate = useNavigate();
@@ -18,10 +18,10 @@ const CarouselCard = ({ title, image, episodeNumber, id }) => {
         onClick={() => {
           fetchVideo(id);
         }}
-        className="animecard-wrapper"
+        className="vertcard-wrapper"
       >
         <div
-          className="animecard-card"
+          className="vertcard-card"
           style={{
             backgroundImage: `url(${image})`,
           }}
@@ -29,7 +29,7 @@ const CarouselCard = ({ title, image, episodeNumber, id }) => {
         {episodeNumber > 0 && (
           <h5 className="epnumber">Episode {episodeNumber}</h5>
         )}
-        <a href={`/watch/${id}`} className="animecard-title">
+        <a href={`/watch/${id}`} className="vertcard-title">
           <TextTruncate text={title} line={2}></TextTruncate>
         </a>
       </div>

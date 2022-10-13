@@ -1,9 +1,3 @@
-@media screen and (min-width: 1450px) {
-  .animeplayer-container {
-    max-width: 68vw;
-  }
-}
-
 .watchlist,
 .share {
   display: flex;
@@ -11,13 +5,6 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-}
-
-.watchlist span,
-.share span {
-  color: #d8d8d8;
-
-  font-size: 1.2rem;
 }
 
 .sharewatchlistcontainer {
@@ -31,6 +18,11 @@
   width: 210px;
   border-radius: 3px;
 }
+.watchlist span,
+.share span {
+  color: #d8d8d8;
+  font-size: 1.2rem;
+}
 .epindex:hover {
   background-color: #823061;
 }
@@ -38,7 +30,9 @@
   width: 98%;
   margin: 0 auto;
 }
+
 .vertical-grid-container {
+  display: block;
   position: absolute;
   right: 30px;
   top: 80px;
@@ -62,9 +56,8 @@
   max-height: 1050px;
   overflow-x: hidden;
   display: grid;
-  column-gap: 10;
   overflow-y: scroll;
-  row-gap: 20px;
+  row-gap: 15px;
 }
 .recommend-div button.rec {
   display: none;
@@ -93,7 +86,6 @@
   align-items: start;
   grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
 }
-
 .recommendations-title {
   color: white;
   font-size: 1.7rem;
@@ -126,11 +118,21 @@
   height: 30px;
   width: 50px;
   color: white;
-
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.3rem;
+}
+@media screen and (max-width: 1700px) {
+  .vertical-grid .animecard-card {
+    height: 280px;
+    width: 200px;
+  }
+}
+@media screen and (max-width: 1470px) {
+  .vertical-grid-container {
+    display: none;
+  }
 }
 @media screen and (max-width: 768px) {
   .animeplayer-container {
@@ -149,15 +151,12 @@
   background-color: #0f0617;
   line-height: 1.5;
 }
-@media screen and (max-width: 1450px) {
-  .vertical-grid-container {
-    display: none;
+@media screen and (min-width: 768px) {
+  .curranime {
+    padding-left: 22px;
   }
-}
-@media screen and (max-width: 1700px) {
-  .vertical-grid .animecard-card {
-    height: 280px;
-    width: 200px;
+  .anime-title {
+    font-size: 2.6rem;
   }
 }
 @media screen and (min-width: 1400px) {
@@ -169,14 +168,8 @@
     margin-left: 10px;
   }
 }
-/* button.rec {
-  display: none;
-} */
-@media screen and (min-width: 768px) {
-  .curranime {
-    padding-left: 22px;
-  }
-  .anime-title {
-    font-size: 2.6rem;
+@media screen and (min-width: 1450px) {
+  .animeplayer-container {
+    max-width: 68vw;
   }
 }

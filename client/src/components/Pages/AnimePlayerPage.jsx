@@ -89,8 +89,7 @@ const AnimePlayerPage = () => {
             <div className="vime-container">
               <AnimePlayer
                 animeInfoUrl={
-                  " https://api.consumet.org/meta/anilist/watch/" +
-                  currentId
+                  " https://api.consumet.org/meta/anilist/watch/" + currentId
                 }
                 src={currentStreamUrl}
               ></AnimePlayer>
@@ -188,10 +187,12 @@ const AnimePlayerPage = () => {
               <br />
             </div>
             <div>
-              <VerticalCarousel
-                rowTitle={"More Like This"}
-                finalQuery={anime.recommendations}
-              ></VerticalCarousel>
+              {anime.recommendations.length > 0 && (
+                <VerticalCarousel
+                  rowTitle={"More Like This"}
+                  finalQuery={anime.recommendations}
+                ></VerticalCarousel>
+              )}
             </div>
           </div>
           {anime.recommendations && (

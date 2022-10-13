@@ -157,11 +157,7 @@ const GenresPage = () => {
       image:
         "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
     },
-    {
-      title: "NOT YET RELEASED",
-      image:
-        "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127230-lf01ya5ny8aH.jpg",
-    },
+
     {
       title: "FINISHED",
       image:

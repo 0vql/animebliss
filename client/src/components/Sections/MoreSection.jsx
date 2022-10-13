@@ -10,7 +10,7 @@ const MoreSection = () => {
         className="more-title"
         style={{
           color: "white",
-          fontSize: "3.2rem",
+          fontSize: "2.9rem",
           marginLeft: 25,
           marginBottom: 3,
           marginTop: 90,

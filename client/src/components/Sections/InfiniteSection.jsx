@@ -44,7 +44,6 @@ const InfiniteSection = ({ url, sectiontitle, itemlimit, id, querytype }) => {
     if (currpage > 1) {
       document.querySelector("#" + id).scrollIntoView();
     }
-    console.log(url + querytype + "page=" + currpage + "&perPage=" + itemlimit);
     axios
       .get(url + querytype + "page=" + currpage + "&perPage=" + itemlimit)
       .then((data) => {
