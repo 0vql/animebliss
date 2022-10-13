@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "@vime/core/themes/default.css";
 import "@vime/core/themes/light.css";
-const AnimePlayer = ({ src, animeInfoUrl }) => {
+const AnimePlayer = ({ src, animeInfoUrl,setVideoIsLoading }) => {
   const [savedTime, setSavedTime] = useState(null);
   useEffect(() => {
     if (localStorage.getItem(animeInfoUrl) !== null) {
@@ -22,6 +22,7 @@ const AnimePlayer = ({ src, animeInfoUrl }) => {
   }, []);
   const [time, setTime] = useState(0);
   useEffect(() => {
+    
     if (src) setUrl(src[0]);
     else {
       toast.error("No servers available");
@@ -40,7 +41,9 @@ const AnimePlayer = ({ src, animeInfoUrl }) => {
         <div>
           <Player
             onVmReady={() => {
+              setVideoIsLoading(false)
               if (savedTime) setTime(savedTime);
+              
             }}
             currentTime={time}
             onVmCurrentTimeChange={(e) => {

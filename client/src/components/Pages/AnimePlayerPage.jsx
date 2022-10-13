@@ -21,7 +21,10 @@ import Navbar from "../Sections/Navbar";
 import AnimeSection from "../Sections/AnimeSection";
 const AnimePlayerPage = () => {
   const animestate = useContext(SharedState);
-  animestate.setVideoIsLoading(true);
+
+  useEffect(() => {
+    animestate.setVideoIsLoading(true);
+  }, []);
   const { id } = useParams();
   const [adaptation, setAdaptation] = useState(null);
   const [description, setDescription] = useState(null);
@@ -85,9 +88,9 @@ const AnimePlayerPage = () => {
       {currentStreamUrl !== null && anime && (
         <>
           <div className="animeplayer-container">
-            {animestate.setVideoIsLoading(false)}
             <div className="vime-container">
               <AnimePlayer
+                setVideoIsLoading={animestate.setVideoIsLoading}
                 animeInfoUrl={
                   " https://api.consumet.org/meta/anilist/watch/" + currentId
                 }

@@ -57,10 +57,14 @@ const HeaderCarouselCard = ({
               <CalendarOutlined /> {year}
             </p>
           </div>
-          <p className="anime-description">
+          <span className="anime-description">
             {" "}
-            <TextTruncate text={regexeddescription} line={4}></TextTruncate>
-          </p>
+            <TextTruncate
+              className="anime-description"
+              text={regexeddescription}
+              line={4}
+            ></TextTruncate>
+          </span>
         </div>
         <button
           onClick={(e) => {

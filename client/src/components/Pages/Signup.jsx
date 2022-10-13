@@ -15,9 +15,7 @@ const Signup = () => {
 
         <div className="login-container">
           <h2>Sign Up</h2>
-          <span style={{ color: "#78909C" }}>
-            Please register your account.
-          </span>
+          <span style={{ color: "#78909C" }}>Please fill in your details.</span>
 
           <form className="login-form" action="/loginreq" method="POST">
             <label htmlFor="">Username *</label>

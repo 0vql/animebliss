@@ -13,6 +13,10 @@ const Home = () => {
   useEffect(() => {
     loadcontext.setVideoIsLoading(true);
   }, []);
+
+  useEffect(() => {
+    loadcontext.setVideoIsLoading(false);
+  }, []);
   return (
     <>
       <Header></Header>
@@ -42,7 +46,6 @@ const Home = () => {
         id="popular"
         querytype={"?"}
       ></InfiniteSection>
-      {loadcontext.setVideoIsLoading(false)}
       <ScrollToTop
         style={{
           border: "1px solid dodgerblue",

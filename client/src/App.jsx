@@ -1,6 +1,7 @@
 import Login from "./components/Pages/Login";
 import "./App.css";
 import GenresPage from "./components/Pages/GenresPage";
+import Watchlist from "./components/Pages/Watchlist";
 import Home from "./components/Pages/Home";
 import MoreSection from "./components/Sections/MoreSection";
 import React, { useState } from "react";
@@ -51,6 +52,7 @@ const App = () => {
                 path="/recentep"
                 element={<RecentPage></RecentPage>}
               />
+              <Route exact path="/watchlist" element={<Watchlist />} />
               <Route exact path="/filter" element={<GenresPage />} />
               <Route
                 exact
