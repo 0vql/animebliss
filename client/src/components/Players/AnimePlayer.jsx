@@ -12,7 +12,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "@vime/core/themes/default.css";
 import "@vime/core/themes/light.css";
-const AnimePlayer = ({ src, animeInfoUrl,setVideoIsLoading }) => {
+const AnimePlayer = ({ src, animeInfoUrl, setVideoIsLoading }) => {
+  const navigate = useNavigate();
   const [savedTime, setSavedTime] = useState(null);
   useEffect(() => {
     if (localStorage.getItem(animeInfoUrl) !== null) {
@@ -22,35 +23,33 @@ const AnimePlayer = ({ src, animeInfoUrl,setVideoIsLoading }) => {
   }, []);
   const [time, setTime] = useState(0);
   useEffect(() => {
-    
-    if (src) setUrl(src[0]);
-    else {
+    if (!src) {
       toast.error("No servers available");
       navigate("/");
+      return;
     }
+    setUrl(src[0]);
+    setVideoIsLoading(false);
   }, [src]);
   const [url, setUrl] = useState(null);
   const hlsConfig = {
     crossOrigin: "anonymous",
     enableWorker: false,
   };
-  const navigate = useNavigate();
   return (
     <>
       {time !== null && (
         <div>
           <Player
             onVmReady={() => {
-              setVideoIsLoading(false)
               if (savedTime) setTime(savedTime);
-              
             }}
             currentTime={time}
             onVmCurrentTimeChange={(e) => {
               setTime(e.detail);
               localStorage.setItem(animeInfoUrl, e.detail);
             }}
-            onVmError={(e) => {
+            onVmError={() => {
               if (url === src[1]) {
                 toast.error("Sorry we cannot play that :( Going back to home ");
                 navigate("/");
