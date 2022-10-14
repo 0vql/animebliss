@@ -6,7 +6,9 @@
   align-items: center;
   cursor: pointer;
 }
-
+.animeplayer-container {
+  margin-top: 65px;
+}
 .sharewatchlistcontainer {
   background-color: #181020;
   height: 100px;
@@ -97,6 +99,8 @@
 .curranime-adaptation,
 .curranime-genres,
 .curranime-studios {
+  font-size: 1.35rem;
+
   color: #d8d8d8;
 }
 .curranime-genres {
@@ -105,6 +109,7 @@
 .summary-content {
   text-align: justify;
   color: #d8d8d8;
+  font-size: 1.35rem;
   font-weight: lighter;
 }
 .summary-title {
@@ -134,11 +139,7 @@
     display: none;
   }
 }
-@media screen and (max-width: 768px) {
-  .animeplayer-container {
-    margin-left: 0px;
-  }
-}
+
 .curranime-platform,
 .curranime-score,
 .curranime-epaired,

@@ -62,8 +62,8 @@ const AnimePlayer = ({ src, animeInfoUrl, setVideoIsLoading }) => {
             theme="dark"
             style={{
               "--vm-player-theme": "rgba(255, 255, 255, .3)",
-              "--vm-slider-track-height": "6px",
-              "--vm-slider-thumb-height": "6px",
+              "--vm-slider-track-height": "5px",
+              "--vm-slider-thumb-height": "5px",
               "--vm-slider-track-focused-height": "6px",
               "--vm-slider-value-color": "#582fcb",
               "--vm-loading-screen-dot-color": "#8230c6",
