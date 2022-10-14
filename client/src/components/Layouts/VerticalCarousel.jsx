@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import CarouselCard from "../Cards/CarouselCard";
+import AnimeCard from "../Cards/AnimeCard";
 const VerticalCarousel = ({ finalQuery, rowTitle }) => {
   return (
     <div className="vertical-grid-container">
@@ -8,14 +8,13 @@ const VerticalCarousel = ({ finalQuery, rowTitle }) => {
       </h1>
       <div className="vertical-grid">
         {finalQuery.map((query, index) => (
-          <CarouselCard
+          <AnimeCard
             key={uuidv4()}
-            title={query.title.english}
+            title={query.title}
             image={query.image}
-            rating={query.rating}
             id={query.id}
             rowTitle={rowTitle}
-          ></CarouselCard>
+          ></AnimeCard>
         ))}
       </div>
     </div>

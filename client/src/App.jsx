@@ -1,33 +1,27 @@
-import Login from "./components/Pages/Login";
-import "./App.css";
+//component imports
+import LoginPage from "./components/Pages/LoginPage";
 import GenresPage from "./components/Pages/GenresPage";
 import Watchlist from "./components/Pages/Watchlist";
 import Home from "./components/Pages/Home";
 import MoreSection from "./components/Sections/MoreSection";
-import React, { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ClockLoader from "react-spinners/MoonLoader";
 import AnimePlayerPage from "./components/Pages/AnimePlayerPage";
 import MoviesPage from "./components/Pages/MoviesPage";
 import RecentPage from "./components/Pages/RecentPage";
 import SearchResults from "./components/Pages/SearchResults";
 import FilteredPage from "./components/Pages/FilteredPage";
-import Signup from "./components/Pages/Signup";
-export const SharedState = React.createContext();
+import SignupPage from "./components/Pages/SignupPage";
+import "./App.css";
+import React, { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+// state for showing and hiding spinner
+export const SharedStateContext = React.createContext();
 const App = () => {
   const [videoIsLoading, setVideoIsLoading] = useState(false);
-  const override = {
-    position: "fixed",
-    zIndex: 800000,
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    margin: "auto",
-    borderColor: "red",
-  };
+
   return (
-    <SharedState.Provider
+    <SharedStateContext.Provider
       value={{
         videoIsLoading,
         setVideoIsLoading,
@@ -39,14 +33,23 @@ const App = () => {
             className="spinner"
             color={"white"}
             loading={videoIsLoading}
-            cssOverride={override}
+            cssOverride={{
+              position: "fixed",
+              zIndex: 800000,
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              margin: "auto",
+              borderColor: "red",
+            }}
             size={35}
           />
         )}
         <BrowserRouter>
           <>
             <Routes>
-              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/search" element={<SearchResults />} />
               <Route
                 exact
                 path="/recentep"
@@ -60,7 +63,6 @@ const App = () => {
                 element={<MoreSection></MoreSection>}
               />
               <Route exact path="/watch/:id" element={<AnimePlayerPage />} />
-              <Route exact path="/signup" element={<Signup />} />
               <Route exact path="/" element={<Home />} />
               <Route
                 exact
@@ -76,12 +78,13 @@ const App = () => {
                 path="/filtered/:type/:value"
                 element={<FilteredPage></FilteredPage>}
               />
-              <Route exact path="/search" element={<SearchResults />} />
+              <Route exact path="/login" element={<LoginPage />} />
+              <Route exact path="/signup" element={<SignupPage />} />
             </Routes>
           </>
         </BrowserRouter>
       </div>
-    </SharedState.Provider>
+    </SharedStateContext.Provider>
   );
 };
 export default App;

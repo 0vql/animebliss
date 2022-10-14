@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../Sections/Navbar";
 import "./Login.css";
 
-const Signup = () => {
+const SignupPage = () => {
   return (
     <>
       <Navbar></Navbar>
@@ -56,4 +56,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupPage;

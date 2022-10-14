@@ -15,16 +15,16 @@ import {
   OrderedListOutlined,
   PlayCircleOutlined,
 } from "@ant-design/icons";
-import { SharedState } from "../../App";
+import { SharedStateContext } from "../../App";
 import axios from "axios";
 import VerticalCarousel from "../Layouts/VerticalCarousel";
 import Navbar from "../Sections/Navbar";
 import AnimeSection from "../Sections/AnimeSection";
 const AnimePlayerPage = () => {
-  const animestate = useContext(SharedState);
+  const SharedState = useContext(SharedStateContext);
 
   useEffect(() => {
-    animestate.setVideoIsLoading(true);
+    SharedState.setVideoIsLoading(true);
   }, []);
   const { id } = useParams();
   const [adaptation, setAdaptation] = useState(null);
@@ -91,7 +91,7 @@ const AnimePlayerPage = () => {
           <div className="animeplayer-container">
             <div className="vime-container">
               <AnimePlayer
-                setVideoIsLoading={animestate.setVideoIsLoading}
+                setVideoIsLoading={SharedState.setVideoIsLoading}
                 animeInfoUrl={
                   " https://api.consumet.org/meta/anilist/watch/" + currentId
                 }

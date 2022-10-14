@@ -1,6 +1,6 @@
 import Carousel from "react-elastic-carousel";
 import { v4 as uuidv4 } from "uuid";
-import CarouselCard from "../Cards/CarouselCard";
+import AnimeCard from "../Cards/AnimeCard";
 import UpcomingCard from "../Cards/UpcomingCard";
 import { RightOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -58,15 +58,14 @@ const CarouselRenderer = ({
       >
         {finalQuery.map((query) =>
           stretchedA ? (
-            <CarouselCard
-              title={query.title.english}
+            <AnimeCard
+              title={query.title}
               image={query.image}
               key={uuidv4()}
-              rating={query.rating}
               id={query.id}
               rowTitle={rowTitle}
               episodeNumber={query.episodeNumber ? query.episodeNumber : 0}
-            ></CarouselCard>
+            ></AnimeCard>
           ) : (
             <UpcomingCard
               setTrailerId={setTrailerId}

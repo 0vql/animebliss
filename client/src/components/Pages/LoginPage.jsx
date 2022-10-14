@@ -1,7 +1,7 @@
 import { GithubFilled, GoogleCircleFilled } from "@ant-design/icons";
 import "./Login.css";
 import Navbar from "../Sections/Navbar";
-const Login = () => {
+const LoginPage = () => {
   return (
     <>
       <Navbar></Navbar>
@@ -62,4 +62,4 @@ const Login = () => {
     </>
   );
 };
-export default Login;
+export default LoginPage;

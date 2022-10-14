@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-grid-system";
 import { setConfiguration } from "react-grid-system";
 import { v4 as uuidv4 } from "uuid";
-import GridCard from "../Cards/GridCard";
+import CarouselCard from "../Cards/AnimeCard";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 setConfiguration({ breakpoints: [605, 924, 1434, 1785, 2000, 2400] });
@@ -36,7 +36,7 @@ const GridRenderer = ({ finalQuery, setAnimeInfo, isAnimate }) => {
               transition={{ duration: 0.3, delay: index * 0.05 }}
               viewport={{ once: true }}
             >
-              <GridCard
+              <CarouselCard
                 setAnimeInfo={setAnimeInfo}
                 title={query.title}
                 id={query.id}
@@ -46,7 +46,7 @@ const GridRenderer = ({ finalQuery, setAnimeInfo, isAnimate }) => {
                 year={query.releaseDate}
                 episodeNumber={query.episodeNumber ? query.episodeNumber : 0}
                 results={query}
-              ></GridCard>
+              ></CarouselCard>
             </motion.div>
           </Col>
         ))}

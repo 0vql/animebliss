@@ -6,9 +6,11 @@ import Navbar from "./Navbar";
 const Header = () => {
   const [finalResults, setFinalResults] = useState([]);
   useEffect(() => {
-    axios.get("https://api.consumet.org/meta/anilist/trending").then((data) => {
-      setFinalResults(data.data.results);
-    }, []);
+    axios
+      .get("https://api.consumet.org/meta/anilist/trending")
+      .then(({ data: { results } }) => {
+        setFinalResults(results);
+      }, []);
   }, []);
   return (
     <>

@@ -10,8 +10,8 @@ const UpcomingSection = () => {
     "https://api.jikan.moe/v4/top/anime?filter=upcoming"
   );
   useEffect(() => {
-    axios.get(url).then((res) => {
-      setUpComing(res.data.data);
+    axios.get(url).then(({ data: { data } }) => {
+      setUpComing(data);
     });
   }, []);
   return (

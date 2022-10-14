@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { faListOl } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TextTruncate from "react-text-truncate";
-import { SharedState } from "../../App";
+import { SharedStateContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 const HeaderCarouselCard = ({
   duration,
@@ -18,12 +18,11 @@ const HeaderCarouselCard = ({
   year,
   description,
   epcount,
-  coversmall,
 }) => {
   const navigate = useNavigate();
-  const animestate = useContext(SharedState);
+  const SharedState = useContext(SharedStateContext);
   async function fetchVideo(id) {
-    animestate.setVideoIsLoading(true);
+    SharedState.setVideoIsLoading(true);
     navigate("/watch/" + id);
   }
   let regexeddescription = description.replaceAll(/<\/?[\w\s]*>|<.+[\W]>/g, "");

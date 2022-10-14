@@ -7,7 +7,6 @@ const UpcomingCard = ({
   trailerVideoId,
   setIsPlaying,
   setTrailerId,
-  id,
 }) => {
   return (
     <>

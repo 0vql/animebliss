@@ -4,19 +4,8 @@ import InfiniteSection from "../Sections/InfiniteSection";
 import ScrollToTop from "react-scroll-to-top";
 import Header from "../Sections/Header";
 import UpcomingSection from "../Sections/UpcomingSection";
-import { useContext } from "react";
-import { SharedState } from "../../App";
 import AnimeSection from "../Sections/AnimeSection";
-import { useEffect } from "react";
 const Home = () => {
-  const loadcontext = useContext(SharedState);
-  useEffect(() => {
-    loadcontext.setVideoIsLoading(true);
-  }, []);
-
-  useEffect(() => {
-    loadcontext.setVideoIsLoading(false);
-  }, []);
   return (
     <>
       <Header></Header>
