@@ -13,6 +13,8 @@ import { useEffect, useState } from "react";
 import "@vime/core/themes/default.css";
 import "@vime/core/themes/light.css";
 const AnimePlayer = ({ src, animeInfoUrl, setVideoIsLoading }) => {
+  const [url, setUrl] = useState(null);
+
   const navigate = useNavigate();
   const [savedTime, setSavedTime] = useState(null);
   useEffect(() => {
@@ -31,14 +33,13 @@ const AnimePlayer = ({ src, animeInfoUrl, setVideoIsLoading }) => {
     setUrl(src[0]);
     setVideoIsLoading(false);
   }, [src]);
-  const [url, setUrl] = useState(null);
   const hlsConfig = {
     crossOrigin: "anonymous",
     enableWorker: false,
   };
   return (
     <>
-      {time !== null && (
+      {time !== null && url && (
         <div>
           <Player
             onVmReady={() => {
@@ -70,7 +71,13 @@ const AnimePlayer = ({ src, animeInfoUrl, setVideoIsLoading }) => {
             autoplay={true}
           >
             <Hls version="latest" config={hlsConfig}>
-              <source data-src={url} type="application/x-mpegURL" />
+              <source
+                data-src={url
+                  .replace(".360", "")
+                  .replace(".480", "")
+                  .replace(".480", "")}
+                type="application/x-mpegURL"
+              />
             </Hls>
             <DefaultUi>
               <Controls

@@ -46,13 +46,13 @@ const InfiniteSection = ({ url, sectiontitle, itemlimit, id, querytype }) => {
     }
     axios
       .get(url + querytype + "page=" + currpage + "&perPage=" + itemlimit)
-      .then((data) => {
-        if (data.data.hasNextPage) {
+      .then(({ data: { hasNextPage, results } }) => {
+        if (hasNextPage) {
           setHasNextPage(true);
         } else {
           setHasNextPage(false);
         }
-        setFetchedData(data.data.results);
+        setFetchedData(results);
         setIsAnimate(true);
       });
   }, [currpage, url]);

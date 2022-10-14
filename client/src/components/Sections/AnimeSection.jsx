@@ -4,8 +4,8 @@ import CarouselRenderer from "../Layouts/CarouselRenderer";
 const AnimeSection = ({ sectiontitle, url, id }) => {
   const [fetchedData, setFetchedData] = useState([]);
   useEffect(() => {
-    axios.get(url).then((data) => {
-      setFetchedData(data.data.results);
+    axios.get(url).then(({ data: { results } }) => {
+      setFetchedData(results);
     });
   }, []);
   return (

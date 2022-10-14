@@ -1,6 +1,17 @@
-import "./AnimePlayerPage.css";
 import ScrollToTop from "react-scroll-to-top";
 import AnimePlayer from "../Players/AnimePlayer";
+import React from 'react';
+
+import {
+  StarFilled,
+  CalendarOutlined,
+  OrderedListOutlined,
+  PlayCircleOutlined,
+} from "@ant-design/icons";
+import VerticalCarousel from "../Layouts/VerticalCarousel";
+import Navbar from "../Sections/Navbar";
+import AnimeSection from "../Sections/AnimeSection";
+import CarouselRenderer from "../Layouts/CarouselRenderer";
 import { RWebShare } from "react-web-share";
 import { useEffect, useState, useContext } from "react";
 import TextTruncate from "react-text-truncate";
@@ -8,21 +19,11 @@ import { faFileCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { v4 as uuidv4 } from "uuid";
 import { useParams } from "react-router-dom";
-import RecommendCarousel from "../Layouts/RecommendCarousel";
-import {
-  StarFilled,
-  CalendarOutlined,
-  OrderedListOutlined,
-  PlayCircleOutlined,
-} from "@ant-design/icons";
 import { SharedStateContext } from "../../App";
 import axios from "axios";
-import VerticalCarousel from "../Layouts/VerticalCarousel";
-import Navbar from "../Sections/Navbar";
-import AnimeSection from "../Sections/AnimeSection";
+import "./AnimePlayerPage.css";
 const AnimePlayerPage = () => {
   const SharedState = useContext(SharedStateContext);
-
   useEffect(() => {
     SharedState.setVideoIsLoading(true);
   }, []);
@@ -35,29 +36,30 @@ const AnimePlayerPage = () => {
   const [currentId, setCurrentId] = useState("");
   const epArray = [];
   const [ep, setEp] = useState(null);
-  useEffect(() => {
-    initialFetch();
-  }, [id]);
+  async function fetchVideoById(url) {
+    return await axios.get(url).then(({ data }) => {
+      setCurrentStreamUrl([data.sources[0].url, data.sources[1].url]);
+    });
+  }
   const initialFetch = async () => {
     return await axios
       .get("https://api.consumet.org/meta/anilist/info/" + id)
-      .then((res) => {
-        setAnime(res.data);
-        setCurrentId(res.data.episodes[selectedOption - 1].id);
-        for (let i = 1; i <= res.data.episodes.length; i++) {
+      .then(({ data }) => {
+        setAnime(data);
+        setCurrentId(data.episodes[selectedOption - 1].id);
+        for (let i = 1; i <= data.episodes.length; i++) {
           epArray.push(i);
         }
         setEp(epArray);
         let adaptation = "";
-        for (let i = 0; i < res.data.relations.length; i++) {
-          if (res.data.relations[i].relationType === "ADAPTATION") {
+        for (let i = 0; i < data.relations.length; i++) {
+          if (data.relations[i].relationType === "ADAPTATION") {
             adaptation =
-              res.data.relations[i].title.english ||
-              res.data.relations[i].title.romaji;
+              data.relations[i].title.english || data.relations[i].title.romaji;
           }
         }
         setAdaptation(adaptation);
-        let regexeddescription = res.data.description.replaceAll(
+        let regexeddescription = data.description.replaceAll(
           /<\/?[\w\s]*>|<.+[\W]>/g,
           ""
         );
@@ -66,27 +68,24 @@ const AnimePlayerPage = () => {
         );
       });
   };
-  async function fetchVideoById(url) {
-    return await axios.get(url).then((response) => {
-      setCurrentStreamUrl([
-        response.data.sources[0].url,
-        response.data.sources[1].url,
-      ]);
-    });
-  }
+  useEffect(() => {
+    initialFetch();
+  }, [id]);
+
   useEffect(() => {
     if (currentId !== "")
       fetchVideoById(
         " https://api.consumet.org/meta/anilist/watch/" + currentId
       );
   }, [currentId]);
+
   useEffect(() => {
     if (anime) setCurrentId(anime.episodes[selectedOption - 1].id);
   }, [selectedOption, anime]);
   return (
     <>
       <Navbar></Navbar>
-      {currentStreamUrl !== null && anime && (
+      {currentStreamUrl !== null && (
         <>
           <div className="animeplayer-container">
             <div className="vime-container">
@@ -163,7 +162,6 @@ const AnimePlayerPage = () => {
                     </div>
                   </RWebShare>
                 </div>
-
                 <div className="watchlist">
                   <FontAwesomeIcon
                     size="xl"
@@ -211,10 +209,11 @@ const AnimePlayerPage = () => {
             </div>
           </div>
           {anime.recommendations && (
-            <RecommendCarousel
+            <CarouselRenderer
               rowTitle="Recommendations"
               finalQuery={anime.recommendations}
-            ></RecommendCarousel>
+              stretchedA={true}
+            ></CarouselRenderer>
           )}
           <AnimeSection
             url={"https://api.consumet.org/meta/anilist/trending"}
