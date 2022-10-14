@@ -1,8 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
-@font-face {
-  font-family: ArabatoMedium;
-  src: url("../../assets/fonts/Araboto\ Medium\ 400.ttf");
-}
 html {
   scroll-behavior: smooth;
 }
@@ -14,7 +10,6 @@ body {
   margin: 0;
   max-height: 100vh;
   max-width: 100%;
-  /* "ArabatoMedium", */
   font-family: "Inter", sans-serif;
 }
 .section-anime,
